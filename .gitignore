@@ -1,0 +1,7 @@
+*.o
+a.out
+core
+log.txt
+traces.txt
+mlx
+minilibx-linux
