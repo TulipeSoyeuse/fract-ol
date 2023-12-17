@@ -22,7 +22,7 @@ $(LIBFT):
 	make -C libft/
 
 fclean:
-	rm -rf *.o $(NAME)
+	rm -rf *.o $(NAME) $(NAME)_debug
 	rm -rf minilibx-linux/*.o
 	make -C libft/ clean
 
