@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:20:26 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 14:21:38 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 14:33:10 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	render_img_mendelbrot(t_img *i, t_window *w)
 	{
 		x = -1;
 		while (++x < LENGTH)
-			compute_image(i, x, y, resolve_mendelbrot(0.285, 0.01, i->x_min + x
-					* step_x, i->y_min + y * step_y));
+			compute_image(i, x, y, resolve_mendelbrot(i->x_min + x
+					* step_x, i->y_min + y * step_y, 0, 0));
 		y--;
 	}
 	mlx_put_image_to_window(w->mlx, w->mlx_win, i->img, 0, 0);

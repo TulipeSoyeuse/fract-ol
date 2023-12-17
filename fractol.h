@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 14:02:43 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 14:36:02 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,8 @@ void			error(int error);
 void			render_img_julia(t_img *i, t_window *w);
 t_img			get_image_copy(t_img origin, t_window window);
 t_pallette		get_color_pallette(char *s);
+void			compute_image(t_img *img, int x, int y, int iter);
+double			modulus(double r, double i);
+t_window		init_mendelbrot(t_pallette p);
+void			render_img_mendelbrot(t_img *i, t_window *w);
 #endif

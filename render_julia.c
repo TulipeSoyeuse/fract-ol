@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 14:22:07 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 14:26:20 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ void	compute_image(t_img *img, int x, int y, int iter)
 	*(unsigned int *)dst = color;
 }
 
-double	modulus(double r, double i)
-{
-	double	res;
-
-	res = pow(r, 2) + pow(i, 2);
-	return (res);
-}
-
 int	resolve_julia(double a, double b, double znr, double zni)
 {
 	size_t	i;
@@ -50,7 +42,7 @@ int	resolve_julia(double a, double b, double znr, double zni)
 		if (modulus(znr, zni) > 4.0)
 			break ;
 		tmp = znr;
-		znr = pow(znr, 2) - pow(zni, 2) + a;
+		znr = znr * znr - zni * zni + a;
 		zni = 2 * tmp * zni + b;
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:11 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 13:56:15 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 14:28:16 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,27 @@ t_window	init_julia(t_pallette p)
 	win.current_img = NULL;
 	image.p = p;
 	render_img_julia(&image, &win);
+	return (win);
+}
+
+t_window	init_mendelbrot(t_pallette p)
+{
+	t_window	win;
+	t_img		image;
+
+	win.mlx = mlx_init();
+		if (!win.mlx)
+			error(1);
+	win.mlx_win = mlx_new_window(win.mlx, LENGTH, WIDTH, "Fract-ol");
+		if (!win.mlx_win)
+			error(1);
+	image = get_image(win);
+	image.x_min = -2;
+	image.x_max = 2;
+	image.y_min = -2;
+	image.y_max = 2;
+	win.current_img = NULL;
+	image.p = p;
+	render_img_mendelbrot(&image, &win);
 	return (win);
 }
