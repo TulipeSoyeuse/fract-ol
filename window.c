@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:11 by romain            #+#    #+#             */
-/*   Updated: 2023/12/14 14:18:59 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 13:56:15 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,20 @@ t_img get_image(t_window window)
 	return (image);
 }
 
-t_window	init(void)
+t_img get_image_copy(t_img origin, t_window window)
+{
+	t_img img;
+
+	img = get_image(window);
+
+	img.x_max = origin.x_max;
+	img.x_min = origin.x_min;
+	img.y_max = origin.y_max;
+	img.x_min = origin.x_min;
+	return (img);
+}
+
+t_window	init_julia(t_pallette p)
 {
 	t_window	win;
 	t_img		image;
@@ -36,11 +49,12 @@ t_window	init(void)
 		if (!win.mlx_win)
 			error(1);
 	image = get_image(win);
-	image.x_min = -3;
-	image.x_max = 3;
-	image.y_min = -3;
-	image.y_max = 3;
+	image.x_min = -2;
+	image.x_max = 2;
+	image.y_min = -2;
+	image.y_max = 2;
 	win.current_img = NULL;
-	render_img(&image, &win);
+	image.p = p;
+	render_img_julia(&image, &win);
 	return (win);
 }

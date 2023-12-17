@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_julia.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2023/12/14 15:07:35 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 14:22:07 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	compute_image(t_img *img, int x, int y, int iter)
 {
 	char	*dst;
+	int		color;
+	int		split;
 
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-int	level(int i)
-{
-	if (i < ITER_NB/2)
-		return (0x00FF0000);
+	split = ITER_NB / 4;
+	if (iter < split)
+		color = img->p.c1;
+	else if (iter < 2 * split)
+		color = img->p.c2;
+	else if (iter < 3 * split)
+		color = img->p.c3;
 	else
-		return (0x0000FF00);
+		color = img->p.c4;
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-double	modulus(double R, double I)
+double	modulus(double r, double i)
 {
 	double	res;
 
-	res = pow(R, 2) + pow(I, 2);
-	return (sqrt(res));
+	res = pow(r, 2) + pow(i, 2);
+	return (res);
 }
 
-int	resolve_Julia(double a, double b, double ZnR, double ZnI)
+int	resolve_julia(double a, double b, double znr, double zni)
 {
 	size_t	i;
 	double	tmp;
@@ -43,32 +47,32 @@ int	resolve_Julia(double a, double b, double ZnR, double ZnI)
 	i = 0;
 	while (i++ < ITER_NB)
 	{
-		if (modulus(ZnR, ZnI) > 2.0)
+		if (modulus(znr, zni) > 4.0)
 			break ;
-		tmp = ZnR;
-		ZnR = pow(ZnR, 2) - pow(ZnI, 2) + a;
-		ZnI = 2 * tmp * ZnI + b;
+		tmp = znr;
+		znr = pow(znr, 2) - pow(zni, 2) + a;
+		zni = 2 * tmp * zni + b;
 	}
-	return (level(i));
+	return (i);
 }
 
-void	render_img(t_img *i, t_window *w)
+void	render_img_julia(t_img *i, t_window *w)
 {
 	size_t	x;
 	size_t	y;
 	double	step_x;
 	double	step_y;
 
-	y = 0;
-	step_x = (double) (i->x_max - i->x_min) / LENGTH;
-	step_y = (double) (i->y_max - i->y_min) / WIDTH;
-	while (y < WIDTH)
+	y = WIDTH;
+	step_x = (double)(i->x_max - i->x_min) / LENGTH;
+	step_y = (double)(i->y_max - i->y_min) / WIDTH;
+	while (y > 0)
 	{
 		x = -1;
 		while (++x < LENGTH)
-			my_mlx_pixel_put(i, x, y, resolve_Julia(0.285, 0.01,
-					x * step_x, y * step_y));
-		y++;
+			compute_image(i, x, y, resolve_julia(0.285, 0.01, i->x_min + x
+					* step_x, i->y_min + y * step_y));
+		y--;
 	}
 	mlx_put_image_to_window(w->mlx, w->mlx_win, i->img, 0, 0);
 	if (w->current_img)
