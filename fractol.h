@@ -6,21 +6,27 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2023/12/13 15:55:23 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/14 13:49:12 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 
 # define FRACTOL_H
+
 # include "mlx/mlx.h"
 # include <math.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+
 # define LENGTH 1920
 # define WIDTH 1080
+# define ITER_NB 75
 
-typedef struct s_window
+typedef struct s_img
 {
-	void	*mlx;
 	void	*img;
 	char	*addr;
 
@@ -32,8 +38,16 @@ typedef struct s_window
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+}			t_img;
+
+typedef struct s_window
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_img	*current_img;
 }			t_window;
 
-t_window	init_win(void);
+t_window	init(void);
 void		error(int error);
+void		render_img(t_img *i, t_window *w);
 #endif
