@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 14:26:20 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/17 17:18:47 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	compute_image(t_img *img, int x, int y, int iter)
 	*(unsigned int *)dst = color;
 }
 
-int	resolve_julia(double a, double b, double znr, double zni)
+int	resolve(double a, double b, double znr, double zni)
 {
 	size_t	i;
 	double	tmp;
@@ -55,22 +55,22 @@ void	render_img_julia(t_img *i, t_window *w)
 	double	step_x;
 	double	step_y;
 
-	y = WIDTH;
-	step_x = (double)(i->x_max - i->x_min) / LENGTH;
-	step_y = (double)(i->y_max - i->y_min) / WIDTH;
-	while (y > 0)
+	y = 0;
+	step_x = (i->x_max - i->x_min) / LENGTH;
+	step_y = (i->y_max - i->y_min) / WIDTH;
+	while (y < WIDTH)
 	{
 		x = -1;
 		while (++x < LENGTH)
-			compute_image(i, x, y, resolve_julia(0.285, 0.01, i->x_min + x
-					* step_x, i->y_min + y * step_y));
-		y--;
+			compute_image(i, x, y, resolve(0.285, 0.01, i->x_min + x * step_x,
+					i->y_max - y * step_y));
+		y++;
 	}
 	mlx_put_image_to_window(w->mlx, w->mlx_win, i->img, 0, 0);
-	if (w->current_img)
+	if (w->current_img.img)
 	{
-		mlx_destroy_image(w->mlx, w->current_img->img);
-		w->current_img = NULL;
+		mlx_destroy_image(w->mlx, w->current_img.img);
+		w->current_img.img = NULL;
 	}
-	w->current_img = i;
+	w->current_img = *i;
 }
