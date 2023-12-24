@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:09:04 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 18:46:48 by romain           ###   ########.fr       */
+/*   Updated: 2023/12/24 16:31:01 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int	mouse_hook_julia(int button, int x, int y, t_window *mlx)
 {
 	t_img	img;
 
-	if (button == 4)
+	write(1, ft_itoa(button), 1);
+	if (button == 1)
 		img = zoom(mlx, x, y, ZOOM_FACTOR);
-	if (button == 5)
-		img = zoom(mlx, x, y, 1 + 1 - ZOOM_FACTOR);
+	else if (button == 3)
+		img = zoom(mlx, x, y, 2 - ZOOM_FACTOR);
 	else
 		return (0);
 	render_img_julia(&img, mlx);
@@ -51,9 +52,9 @@ int	mouse_hook_mendelbrot(int button, int x, int y, t_window *mlx)
 {
 	t_img	img;
 
-	if (button == 4)
+	if (button == 1)
 		img = zoom(mlx, x, y, 1 + 1 - ZOOM_FACTOR);
-	if (button == 5)
+	if (button == 3)
 		img = zoom(mlx, x, y, ZOOM_FACTOR);
 	else
 		return (0);
