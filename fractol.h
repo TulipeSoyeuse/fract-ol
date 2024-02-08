@@ -6,7 +6,7 @@
 /*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 11:22:41 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/08 11:27:52 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-//# include "mlx/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_mendelbrot.c                                :+:      :+:    :+:   */
+/*   render_mandelbrot.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:20:26 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 18:18:17 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/08 11:29:04 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	modulus(double r, double i)
 {
 	double	res;
 
-	res = pow(r, 2) + pow(i, 2);
+	res = r*r + i*i;
 	return (res);
 }
 

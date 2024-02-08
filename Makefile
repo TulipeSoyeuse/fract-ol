@@ -2,7 +2,7 @@ SRCS	= $(wildcard *.c)
 OBJS	= $(SRCS:.c=.o)
 CFLAGS 	= -Wall -Wextra -Werror
 NAME	= fractol
-LIBX	= minilibx-linux/libmlx_Darwin.a
+LIBX	= minilibx-linux/libmlx_Linux.a
 LIBFT	= libft/libft.a
 
 all: $(NAME)
