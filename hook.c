@@ -6,7 +6,7 @@
 /*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:09:04 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 12:04:22 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:21:24 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ int	mouse_hook_mendelbrot(int button, int x, int y, t_window *mlx)
 
 	if (button == 4)
 		img = zoom(mlx, x, y, ZOOM_FACTOR);
-	if (button == 5)
+	else if (button == 5)
+	{
 		img = zoom(mlx, x, y, 2 - ZOOM_FACTOR);
+	}
 	else
 		return (0);
 	render_img_mendelbrot(&img, mlx);
@@ -65,11 +67,7 @@ int	key_hook(int button, t_window *mlx)
 {
 	if (button == 65307)
 	{
-		mlx_destroy_image(mlx->mlx, mlx->current_img.img);
-		mlx_destroy_window(mlx->mlx,mlx->mlx_win);
-		mlx_destroy_display(mlx->mlx);
-		free(mlx->mlx);
-		exit(0);
+		ft_exit(mlx);
 	}
 	return (0);
 }
@@ -79,7 +77,7 @@ void	loop(t_window mlx, int v)
 	if (v)
 	{
 		mlx_mouse_hook(mlx.mlx_win, &mouse_hook_mendelbrot, &mlx);
-		mlx_key_hook(mlx.mlx_win, &key_hook, &mlx);	
+		mlx_key_hook(mlx.mlx_win, &key_hook, &mlx);
 	}
 	else
 	{

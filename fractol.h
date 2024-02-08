@@ -6,7 +6,7 @@
 /*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 11:27:52 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:09:58 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ typedef struct s_img
 	void		*img;
 	char		*addr;
 
-	double			x_min;
-	double			x_max;
-	double			y_min;
-	double			y_max;
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
 
 	int			bits_per_pixel;
 	int			line_length;
@@ -59,7 +59,8 @@ typedef struct s_window
 }				t_window;
 
 t_window		init_julia(t_pallette p);
-void			error(int error);
+void			error(int error, t_window *mlx);
+void			ft_exit(t_window *mlx);
 void			render_img_julia(t_img *i, t_window *w);
 t_pallette		get_color_pallette(char *s);
 void			compute_image(t_img *img, int x, int y, int iter);
