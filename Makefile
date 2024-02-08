@@ -1,4 +1,10 @@
-SRCS	= $(wildcard *.c)
+SRCS	=	color.c \
+			error.c \
+			hook.c \
+			main.c \
+			render_julia.c \
+			render_mandelbrot.c \
+			window.c
 OBJS	= $(SRCS:.c=.o)
 CFLAGS 	= -Wall -Wextra -Werror
 NAME	= fractol

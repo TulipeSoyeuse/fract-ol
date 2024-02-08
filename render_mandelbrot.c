@@ -6,7 +6,7 @@
 /*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:20:26 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 11:29:04 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:23:43 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	modulus(double r, double i)
 {
 	double	res;
 
-	res = r*r + i*i;
+	res = r * r + i * i;
 	return (res);
 }
 
