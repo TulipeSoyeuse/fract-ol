@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:32:55 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 12:18:35 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/17 19:52:53 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	error(int error, t_window *mlx)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_exit(t_window *mlx)
+int	ft_exit(t_window *mlx)
 {
 	if (mlx->current_img.img)
 		mlx_destroy_image(mlx->mlx, mlx->current_img.img);
@@ -40,4 +40,5 @@ void	ft_exit(t_window *mlx)
 		free(mlx->mlx);
 	}
 	exit(EXIT_SUCCESS);
+	return (0);
 }

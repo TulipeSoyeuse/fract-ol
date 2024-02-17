@@ -6,7 +6,7 @@
 #    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 17:00:39 by romain            #+#    #+#              #
-#    Updated: 2024/02/17 17:30:01 by romain           ###   ########.fr        #
+#    Updated: 2024/02/17 18:57:51 by romain           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,16 +38,16 @@ re: fclean all
 mac: $(NAME_MAC)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -c -o $@ $<
+	$(CC) $(CFLAGS) -g3 -I$(INCLUDES) -c -o $@ $<
 
 debug: $(OBJS) $(LIBX) $(LIBFT)
 	cc $(CFLAGS) -g3 -gdwarf-4 -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11 -Lminilibx-linux/ -lmlx $^ -o $(NAME)_debug
 
 $(NAME_MAC): $(OBJS) $(LIBX_MAC) $(LIBFT)
-	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11  -Lminilibx-linux/ -lmlx $^ -o $(NAME)
+	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11  -Lminilibx-linux/ -lmlx $^ -o $@
 
 $(NAME): $(OBJS) $(LIBX) $(LIBFT)
-	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib  -lX11 -Lminilibx-linux/ -lmlx $^ -o $(NAME)
+	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib  -lX11 -Lminilibx-linux/ -lmlx $^ -o $@
 
 $(LIBX_MAC):
 	make -C minilibx-linux/
@@ -58,9 +58,12 @@ $(LIBX):
 $(LIBFT):
 	make -C libft/
 
-fclean:
-	rm -rf *.o $(NAME) $(NAME)_debug
-	rm -rf minilibx-linux/*.o
-	make -C libft/ clean
+clean:
+	rm -rf $(OBJS)
 
-make re : fclean all
+fclean: clean
+	rm -rf *.o $(NAME) $(NAME)_debug $(NAME_MAC)
+	make -C minilibx-linux/ clean
+	make -C libft/ fclean
+
+.PHONY: all clean fclean re

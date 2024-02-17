@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:09:04 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 12:21:24 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/17 19:51:20 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	mouse_hook_mendelbrot(int button, int x, int y, t_window *mlx)
 
 int	key_hook(int button, t_window *mlx)
 {
+	printf("button pressed: %d\n", button);
 	if (button == 65307)
 	{
 		ft_exit(mlx);
@@ -75,14 +76,10 @@ int	key_hook(int button, t_window *mlx)
 void	loop(t_window mlx, int v)
 {
 	if (v)
-	{
 		mlx_mouse_hook(mlx.mlx_win, &mouse_hook_mendelbrot, &mlx);
-		mlx_key_hook(mlx.mlx_win, &key_hook, &mlx);
-	}
 	else
-	{
-		mlx_key_hook(mlx.mlx_win, &key_hook, &mlx);
 		mlx_mouse_hook(mlx.mlx_win, &mouse_hook_julia, &mlx);
-	}
+	mlx_key_hook(mlx.mlx_win, &key_hook, &mlx);
+	mlx_hook(mlx.mlx_win, EVENT_CLOSE_BTN, 0, ft_exit, &mlx);
 	mlx_loop(mlx.mlx);
 }

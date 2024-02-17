@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2023/12/17 17:18:47 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:28:52 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	compute_image(t_img *img, int x, int y, int iter)
 	int		color;
 	int		split;
 
-	split = ITER_NB / 4;
+	split = ITER_NB;
 	if (iter < split)
 		color = img->p.c1;
 	else if (iter < 2 * split)
@@ -62,7 +62,7 @@ void	render_img_julia(t_img *i, t_window *w)
 	{
 		x = -1;
 		while (++x < LENGTH)
-			compute_image(i, x, y, resolve(0.285, 0.01, i->x_min + x * step_x,
+			compute_image(i, x, y, resolve(w->c, 0.01, i->x_min + x * step_x,
 					i->y_max - y * step_y));
 		y++;
 	}

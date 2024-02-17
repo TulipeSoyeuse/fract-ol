@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:11 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 12:18:38 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/17 18:11:19 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_img	get_new_image(t_window window)
 	return (image);
 }
 
-t_window	init_julia(t_pallette p)
+t_window	init_julia(t_pallette p, double c)
 {
 	t_window	win;
 	t_img		image;
@@ -45,6 +45,7 @@ t_window	init_julia(t_pallette p)
 	image.y_max = 2.0;
 	win.current_img.img = NULL;
 	image.p = p;
+	win.c = c;
 	render_img_julia(&image, &win);
 	return (win);
 }

@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 17:30:55 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/17 19:52:34 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define EVENT_CLOSE_BTN 17
 # define LENGTH 1080
 # define WIDTH 1080
 # define ITER_NB 200
@@ -56,11 +57,12 @@ typedef struct s_window
 	void		*mlx;
 	void		*mlx_win;
 	t_img		current_img;
+	double		c;
 }				t_window;
 
-t_window		init_julia(t_pallette p);
+t_window		init_julia(t_pallette p, double c);
 void			error(int error, t_window *mlx);
-void			ft_exit(t_window *mlx);
+int				ft_exit(t_window *mlx);
 void			render_img_julia(t_img *i, t_window *w);
 t_pallette		get_color_pallette(char *s);
 void			compute_image(t_img *img, int x, int y, int iter);
