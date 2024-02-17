@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 19:28:52 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/17 23:17:05 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ void	compute_image(t_img *img, int x, int y, int iter)
 {
 	char	*dst;
 	int		color;
-	int		split;
+	double	val;
 
-	split = ITER_NB;
-	if (iter < split)
+	val = (double)iter / (double)ITER_NB;
+	if (val > 0.8)
+		color = 0;
+	else if (val < 0.2)
 		color = img->p.c1;
-	else if (iter < 2 * split)
+	else if (val < 0.4)
 		color = img->p.c2;
-	else if (iter < 3 * split)
+	else if (val < 0.6)
 		color = img->p.c3;
 	else
 		color = img->p.c4;

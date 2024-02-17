@@ -6,7 +6,7 @@
 #    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 17:00:39 by romain            #+#    #+#              #
-#    Updated: 2024/02/17 18:57:51 by romain           ###   ########.fr        #
+#    Updated: 2024/02/17 23:49:11 by romain           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRC_FILES	=	color.c \
 				main.c \
 				render_julia.c \
 				render_mandelbrot.c \
-				window.c
+				window.c \
+				mouvement.c \
+				zoom.c
 CFLAGS 		=	-Wall -Wextra -Werror
 NAME		=	fractol
 NAME_MAC	=	fractol_MAC

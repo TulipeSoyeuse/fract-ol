@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 19:52:34 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/17 23:56:02 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,18 @@
 # include <unistd.h>
 
 # define EVENT_CLOSE_BTN 17
+# define KEY_ESC 65307
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_P 112
+# define KEY_M 109
+
+# define MOVE_FACTOR 20
 # define LENGTH 1080
 # define WIDTH 1080
-# define ITER_NB 200
+# define ITER_NB 70
 # define ZOOM_FACTOR 0.8
 
 typedef struct s_pallete
@@ -72,4 +81,11 @@ void			render_img_mendelbrot(t_img *i, t_window *w);
 void			loop(t_window mlx, int v);
 int				resolve(double a, double b, double znr, double zni);
 t_img			get_new_image(t_window window);
+
+t_img			zoom(t_window *mlx, double x, double y, double zoom);
+t_img			mp_zoom(t_window *mlx, double zoom);
+t_img			go_up(t_window *mlx);
+t_img			go_down(t_window *mlx);
+t_img			go_left(t_window *mlx);
+t_img			go_right(t_window *mlx);
 #endif
