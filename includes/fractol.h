@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 12:09:58 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/17 17:30:55 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define FRACTOL_H
 
-# include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>
