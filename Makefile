@@ -6,7 +6,7 @@
 #    By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 17:00:39 by romain            #+#    #+#              #
-#    Updated: 2024/02/18 11:39:25 by rdupeux          ###   ########.fr        #
+#    Updated: 2024/02/18 11:55:02 by rdupeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC_FILES	=	color.c \
 				render_mandelbrot.c \
 				window.c \
 				mouvement.c \
-				zoom.c
+				zoom.c \
+				utils.c
+
 CFLAGS 		=	-Wall -Wextra -Werror
 NAME		=	fractol
 NAME_MAC	=	fractol_MAC

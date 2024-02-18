@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:30 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 19:31:09 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/18 12:12:12 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ void	launch_julia(int ac, char **av)
 	t_window	mlx;
 
 	if (ac == 3)
-	{
-		if (ft_atof(av[2]) == 0)
-			mlx = init_julia(get_color_pallette(av[2]), 0.285);
-		else
-			mlx = init_julia(get_color_pallette("dark"), ft_atof(av[2]));
-	}
+		mlx = init_julia(get_color_pallette(av[2]), 0.285);
 	if (ac == 4)
 		mlx = init_julia(get_color_pallette(av[2]), ft_atof(av[3]));
+	if (ac > 4)
+		display_man();
 	loop(mlx, 0);
 }
 
@@ -64,9 +61,5 @@ int	main(int ac, char **av)
 	if (ac > 2)
 		arg3(ac, av);
 	else
-	{
-		write(STDOUT_FILENO, "Usage : ./fractol <Mandelbrot|Julia>", 37);
-		write(STDOUT_FILENO, " <(optional)purple|dark|sage|(def)maroon>", 42);
-		write(STDOUT_FILENO, " <(optional) init param for julia>\n", 36);
-	}
+		display_man();
 }

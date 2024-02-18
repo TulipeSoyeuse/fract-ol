@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 23:56:02 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:53:44 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void			render_img_mendelbrot(t_img *i, t_window *w);
 void			loop(t_window mlx, int v);
 int				resolve(double a, double b, double znr, double zni);
 t_img			get_new_image(t_window window);
+void			display_man(void);
 
 t_img			zoom(t_window *mlx, double x, double y, double zoom);
 t_img			mp_zoom(t_window *mlx, double zoom);
