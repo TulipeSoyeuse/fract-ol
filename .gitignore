@@ -3,7 +3,5 @@ a.out
 core
 log.txt
 traces.txt
-mlx
-fractol
-fractol_debug
+fractol*
 Makefile.*

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
+#    By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 17:00:39 by romain            #+#    #+#              #
-#    Updated: 2024/02/17 23:49:11 by romain           ###   ########.fr        #
+#    Updated: 2024/02/18 11:16:05 by rdupeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 all: $(NAME)
 
-remac: fclean mac 
+remac: fclean mac
 
 re: fclean all
 
@@ -49,7 +49,7 @@ $(NAME_MAC): $(OBJS) $(LIBX_MAC) $(LIBFT)
 	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib -lX11  -Lminilibx-linux/ -lmlx $^ -o $@
 
 $(NAME): $(OBJS) $(LIBX) $(LIBFT)
-	cc $(CFLAGS) -L/opt/homebrew/Cellar/libxext/1.3.5/lib -lXext -L/opt/homebrew/Cellar/libx11/1.8.7/lib  -lX11 -Lminilibx-linux/ -lmlx $^ -o $@
+	cc $(CFLAGS) -lXext -lX11 -Lminilibx-linux/ -lmlx $^ -o $@
 
 $(LIBX_MAC):
 	make -C minilibx-linux/
