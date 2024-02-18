@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:09:04 by romain            #+#    #+#             */
-/*   Updated: 2024/02/18 00:07:22 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:30:37 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	key_hook_julia(int button, t_window *mlx)
 {
 	t_img	img;
 
-	printf("button pressed: %d\n", button);
 	if (button == KEY_ESC)
 		ft_exit(mlx);
 	else if (button == KEY_UP)
@@ -60,7 +59,7 @@ int	key_hook_julia(int button, t_window *mlx)
 	else if (button == KEY_P)
 		img = mp_zoom(mlx, ZOOM_FACTOR);
 	else if (button == KEY_M)
-		img = mp_zoom(mlx, 1 + ZOOM_FACTOR);
+		img = mp_zoom(mlx, 2 - ZOOM_FACTOR);
 	else
 		return (0);
 	render_img_julia(&img, mlx);

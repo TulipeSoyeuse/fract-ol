@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 23:48:18 by romain            #+#    #+#             */
-/*   Updated: 2024/02/18 00:09:16 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:25:42 by rdupeux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_img	zoom(t_window *mlx, double x, double y, double zoom)
 	translate_y = (mlx->current_img.y_max - y * (mlx->current_img.y_max
 				- mlx->current_img.y_min) / WIDTH) - (mlx->current_img.y_max
 			- (mlx->current_img.y_max - mlx->current_img.y_min) / 2);
+	ni = get_new_image(*mlx);
 	ni.x_min = (mlx->current_img.x_min + translate_x) * zoom;
 	ni.x_max = (mlx->current_img.x_max + translate_x) * zoom;
 	ni.y_min = (mlx->current_img.y_min + translate_y) * zoom;
