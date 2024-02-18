@@ -6,7 +6,7 @@
 #    By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 17:00:39 by romain            #+#    #+#              #
-#    Updated: 2024/02/18 11:16:05 by rdupeux          ###   ########.fr        #
+#    Updated: 2024/02/18 11:39:25 by rdupeux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ $(LIBX):
 
 $(LIBFT):
 	make -C libft/
+
+$(OBJ_DIR):
+	mkdir obj
 
 clean:
 	rm -rf $(OBJS)
