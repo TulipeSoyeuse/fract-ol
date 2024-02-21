@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 23:56:02 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/21 14:55:25 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define KEY_RIGHT 65363
 # define KEY_P 112
 # define KEY_M 109
+# define KEY_I 105
+# define KEY_V 118
 
 # define MOVE_FACTOR 20
 # define LENGTH 1080
@@ -43,6 +45,11 @@ typedef struct s_pallete
 	int			c2;
 	int			c3;
 	int			c4;
+	int			c5;
+	int			c6;
+	int			c7;
+	int			c8;
+	int			c9;
 }				t_pallette;
 
 typedef struct s_img
@@ -67,6 +74,7 @@ typedef struct s_window
 	void		*mlx_win;
 	t_img		current_img;
 	double		c;
+	size_t		iter;
 }				t_window;
 
 t_window		init_julia(t_pallette p, double c);
@@ -74,13 +82,17 @@ void			error(int error, t_window *mlx);
 int				ft_exit(t_window *mlx);
 void			render_img_julia(t_img *i, t_window *w);
 t_pallette		get_color_pallette(char *s);
-void			compute_image(t_img *img, int x, int y, int iter);
+void			compute_image(t_img *img, int x, int y, int iter,
+					int total_iter);
 double			modulus(double r, double i);
 t_window		init_mendelbrot(t_pallette p);
 void			render_img_mendelbrot(t_img *i, t_window *w);
 void			loop(t_window mlx, int v);
-int				resolve(double a, double b, double znr, double zni);
+int				resolve(double a, double b, double znr, double zni,
+					size_t iter);
 t_img			get_new_image(t_window window);
+
+t_img			up_iter(t_window *w);
 
 t_img			zoom(t_window *mlx, double x, double y, double zoom);
 t_img			mp_zoom(t_window *mlx, double zoom);

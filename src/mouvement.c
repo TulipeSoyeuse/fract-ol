@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 23:17:32 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 23:52:53 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:09:43 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ t_img	go_right(t_window *mlx)
 			- mlx->current_img.x_min) / MOVE_FACTOR;
 	ni.y_max = mlx->current_img.y_max;
 	ni.y_min = mlx->current_img.y_min;
-	// printf("new image min x:%f min y:%f max x:%f max y:%f", ni.x_min,
-	//	ni.y_min,
-	// 	ni.x_max, ni.y_max);
 	ni.p = mlx->current_img.p;
 	return (ni);
 }
@@ -73,4 +70,19 @@ t_img	go_up(t_window *mlx)
 	ni.x_min = mlx->current_img.x_min;
 	ni.p = mlx->current_img.p;
 	return (ni);
+}
+
+t_img	up_iter(t_window *w)
+{
+	t_img	img;
+
+	printf("ping\n");
+	w->iter++;
+	img = get_new_image(*w);
+	img.p = w->current_img.p;
+	img.x_max = w->current_img.x_max;
+	img.x_min = w->current_img.x_min;
+	img.y_max = w->current_img.y_max;
+	img.y_min = w->current_img.y_min;
+	return (img);
 }

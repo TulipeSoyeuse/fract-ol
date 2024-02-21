@@ -6,64 +6,32 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:20:23 by romain            #+#    #+#             */
-/*   Updated: 2024/02/17 23:01:24 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/21 14:11:18 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_pallette	get_dark_pal(void)
+t_pallette	get_base_pal(void)
 {
 	t_pallette	p;
 
-	p.c4 = 0x392467;
-	p.c3 = 0x5D3587;
-	p.c2 = 0xA367B1;
-	p.c1 = 0xFFD1E3;
-	return (p);
-}
-
-t_pallette	get_purple_pal(void)
-{
-	t_pallette	p;
-
-	p.c4 = 0x191919;
-	p.c3 = 0x750E21;
-	p.c2 = 0xE3651D;
-	p.c1 = 0xBED754;
-	return (p);
-}
-
-t_pallette	get_sage_pal(void)
-{
-	t_pallette	p;
-
-	p.c4 = 0x092635;
-	p.c3 = 0x1B4242;
-	p.c2 = 0x5C8374;
-	p.c1 = 0x9EC8B9;
-	return (p);
-}
-
-t_pallette	get_maroon_pal(void)
-{
-	t_pallette	p;
-
-	p.c4 = 0x5F0F40;
-	p.c3 = 0xFB8B24;
-	p.c2 = 0xE36414;
-	p.c1 = 0x9A031E;
+	p.c9 = 0x03071E;
+	p.c8 = 0x211C1B;
+	p.c7 = 0x3D3019;
+	p.c6 = 0x594417;
+	p.c5 = 0x745814;
+	p.c4 = 0xAC7F0F;
+	p.c3 = 0xC8930D;
+	p.c2 = 0xE3A60A;
+	p.c1 = 0xFFBA08;
 	return (p);
 }
 
 t_pallette	get_color_pallette(char *s)
 {
-	if (ft_strncmp(s, "purple", 7) == 0)
-		return (get_purple_pal());
-	if (ft_strncmp(s, "dark", 5) == 0)
-		return (get_dark_pal());
-	if (ft_strncmp(s, "sage", 5) == 0)
-		return (get_sage_pal());
+	if (ft_strncmp(s, "base", ft_strlen(s)) == 0)
+		return (get_base_pal());
 	else
-		return (get_maroon_pal());
+		return (get_base_pal());
 }
