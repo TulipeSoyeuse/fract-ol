@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mandelbrot.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdupeux <rdupeux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:20:26 by romain            #+#    #+#             */
-/*   Updated: 2024/02/08 13:23:43 by rdupeux          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:38:20 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	render_img_mendelbrot(t_img *i, t_window *w)
 		x = -1;
 		while (++x < LENGTH)
 			compute_image(i, x, y, resolve(i->x_min + x * step_x, i->y_max - y
-					* step_y, 0, 0));
+					* step_y, 0, 0, w->iter), w->iter);
 		y++;
 	}
 	mlx_put_image_to_window(w->mlx, w->mlx_win, i->img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:32:01 by romain            #+#    #+#             */
-/*   Updated: 2024/02/21 14:55:55 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:40:46 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	render_img_julia(t_img *i, t_window *w)
 	double	step_x;
 	double	step_y;
 
+	printf("current addr : %p, new %p\n", w->current_img.addr, i->addr);
 	y = 0;
 	step_x = (i->x_max - i->x_min) / LENGTH;
 	step_y = (i->y_max - i->y_min) / WIDTH;
