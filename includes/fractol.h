@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:31:34 by romain            #+#    #+#             */
-/*   Updated: 2024/02/21 14:55:25 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/22 12:36:04 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include "ft_lst/ft_lst.h"
 # include <math.h>
+# include <pthread.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -75,7 +77,17 @@ typedef struct s_window
 	t_img		current_img;
 	double		c;
 	size_t		iter;
+	t_lst		*threads;
 }				t_window;
+
+typedef struct s_thread_arg
+{
+	t_img		*i;
+	t_window	*w;
+	double		step_x;
+	double		step_y;
+	size_t y
+}				t_thread_arg;
 
 t_window		init_julia(t_pallette p, double c);
 void			error(int error, t_window *mlx);

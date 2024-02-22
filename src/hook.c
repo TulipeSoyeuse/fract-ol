@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 15:09:04 by romain            #+#    #+#             */
-/*   Updated: 2024/02/21 15:29:04 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/22 10:33:51 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	key_hook_mandelbrot(int button, t_window *mlx)
 		img = mp_zoom(mlx, ZOOM_FACTOR);
 	else if (button == KEY_M)
 		img = mp_zoom(mlx, 1 + ZOOM_FACTOR);
+	else if (button == KEY_I)
+		img = up_iter(mlx);
 	else
 		return (0);
 	render_img_mendelbrot(&img, mlx);

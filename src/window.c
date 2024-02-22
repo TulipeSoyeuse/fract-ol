@@ -6,11 +6,27 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:08:11 by romain            #+#    #+#             */
-/*   Updated: 2024/02/21 15:30:47 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/22 12:58:08 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+gen_threads(t_window *w)
+{
+	size_t		y;
+	pthread_t	*thread;
+
+	y = 0;
+	while (y < WIDTH)
+	{
+		thread = malloc(sizeof(pthread_t));
+		if (!thread)
+			error(2, w);
+		append(&(w->threads), lst_new(thread));
+		y += 40;
+	}
+}
 
 t_img	get_new_image(t_window window)
 {
@@ -68,7 +84,10 @@ t_window	init_mendelbrot(t_pallette p)
 	image.y_min = -2.0;
 	image.y_max = 2.0;
 	win.current_img.img = NULL;
+	win.iter = ITER_NB;
+	win.threads = NULL;
 	image.p = p;
+	gen_threads(&win);
 	render_img_mendelbrot(&image, &win);
 	return (win);
 }

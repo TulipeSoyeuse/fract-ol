@@ -6,7 +6,7 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 23:17:32 by romain            #+#    #+#             */
-/*   Updated: 2024/02/21 15:09:43 by romain           ###   ########.fr       */
+/*   Updated: 2024/02/22 10:47:06 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ t_img	up_iter(t_window *w)
 {
 	t_img	img;
 
-	printf("ping\n");
-	w->iter++;
+	w->iter += 5;
 	img = get_new_image(*w);
 	img.p = w->current_img.p;
 	img.x_max = w->current_img.x_max;

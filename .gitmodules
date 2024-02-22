@@ -4,3 +4,6 @@
 [submodule "minilibx-linux"]
 	path = minilibx-linux
 	url = git@github.com:42Paris/minilibx-linux.git
+[submodule "ft_lst"]
+	path = ft_lst
+	url = git@github.com:TulipeSoyeuse/ft_lst.git
